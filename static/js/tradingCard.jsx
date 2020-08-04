@@ -38,8 +38,13 @@ function TradingCardContainer() {
 
   const [cards, updateCards] = React.useState([floatCard]);
 
-  // updateCards([floatCard])
-
+  React.useEffect(() => {
+    fetch('/cards.json')
+    .then((response) => response.json())
+    .then((data) => updateCards(data))
+  }, [])
+  
+  
   const tradingCards = [];
 
   for (const currentCard of cards) {
